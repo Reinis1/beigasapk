@@ -1,0 +1,176 @@
+Scroll:
+
+#:set s dp(150)
+
+<Canvas1>:
+    canvas:
+        Rectangle:
+            pos: self.center_x-s/2, self.center_y-s/2
+            size: s, s
+        Line:
+            points: (0, 0, self.width/2, 100)
+            width: 2
+
+<Canvas2>:
+    canvas:
+        Color:
+            rgba: 1, 0, 0.3, 1
+        Line:
+            circle: (200, 200, 100)
+            width: 3
+        Color:
+            rgba: 1, 1, 0.3, 0.3
+        Line:
+            ellipse: (200, 200, 22, 100)
+            width: 6
+
+<Canvas4>:
+    Button:
+        pos: 100, 200
+        text: "move"
+        on_press: root.on_button_move_press()
+
+
+<Canvas6>:
+    Button:
+        canvas.before:
+            Rectangle:
+        text: "press me"
+
+
+
+
+<ImagesExample@GridLayout>
+    cols: 3
+    Image:
+        source: "images/cake.jpg"
+    Image:
+        source: "images/cake.jpg"
+        allow_stretch: True
+    Image:
+        source: "images/cake.jpg"
+        keep_ratio: False
+        allow_stretch: True
+
+<WidgetsLayout>
+    cols: 3
+    ToggleButton:
+        text: "OFF"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp"
+    Button:
+        text: "Click me"
+        on_press: root.on_button_c()
+        disabled: not root.count_enabled
+    Label:
+        text: root.my_text
+        font_name: "fonts/Lcd.ttf"
+        font_size: "80dp"
+    Switch:
+        id: my_switch
+        size_hint: None, 1
+        width: "100dp"
+        on_active: root.on_switch_active(self)
+        active: True
+    Slider:
+        id: my_slider
+        min: 0
+        max: 100
+        value: 50
+        orientation: "vertical"
+        on_value: root.on_slider_value(self)
+        disabled: not my_switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: str(int(my_slider.value))
+        ProgressBar:
+            max: 100
+            value: my_slider.value
+    TextInput:
+        id: my_text_input
+        size_hint: None, 1
+        width: "100dp"
+        text: "type here"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: root.text_input_str
+
+
+<PageLayoutExample@PageLayout>:
+    GridLayoutEx:
+    AnchorLayoutEx:
+    MainWidget:
+
+<Scroll@ScrollView>:
+    StackLayoutEx:
+        size_hint: 1, None
+        height: self.minimum_height
+
+<StackLayoutEx>:
+    # orientation: "lr-bt"
+    padding: ("20dp", "20dp", "20dp", "20dp",)
+    spacing: "10dp", "20dp"
+
+<GridLayoutEx>:
+    cols: 2
+    BoxLayoutEx:
+    Button:
+        text: "D"
+    Button:
+        text: "C"
+    Button:
+        text: "A"
+    Button:
+        text: "D"
+    Button:
+        text: "C"
+
+<AnchorLayoutEx>:
+    anchor_x: "center"
+    anchor_y: "top"
+    BoxLayout:
+        size_hint: .2, .2
+        Button:
+            text: "A"
+        Button:
+            text: "B"
+
+
+<BoxLayoutEx>:
+    orientation: "horizontal"
+    Button:
+        text: "Hello"
+        color: 1, 1, 0.1, 0.6
+        size_hint: 0.5, None
+        height: "50dp"
+    Button:
+        text: "B"
+        size: "40dp", "40dp"
+        pos: 12, 34
+        color: 1, 1, 0.1, 0.6
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+        Button:
+            text: "B4"
+
+<MainWidget>:
+    Button:
+        text: "Hello"
+        size: "40dp", "40dp"
+        pos: 12, 34
+        color: 1, 1, 0.1, 0.6
+    Label:
+        text: "Hello2"
+        size: "40dp", "40dp"
+        pos: "120dp", "340dp"
+        color: 1, 0, 0.1, 0.6
